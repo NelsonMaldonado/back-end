@@ -1,6 +1,6 @@
 const router = require("express").Router()
 const model = require("./users-model")
-
+const { registerPayload } = require("../users/users-middleware")
 router.get("/", (req, res) => {
   res.send("getting all users")
 })
@@ -8,7 +8,7 @@ router.get("/", (req, res) => {
 //     res.json(await getAllUsers())
 //   })
 
-router.post("/register", (req, res) => {
+router.post("/register", registerPayload, (req, res) => {
   res.send("user registered")
 })
 
